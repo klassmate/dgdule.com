@@ -1,0 +1,55 @@
+<div class="container">
+  <div class="hero-unit">
+    <h1><%= @lecture.title %></h1>
+    <p class="tagline">
+      <%= @lecture.provider %>
+    </p>
+  </div>
+
+  <%= form_for [@lecture, @assessment], html: { class: 'form-horizontal assessment-form row' } do |f| %>
+    <div class="span6">
+      <div class="control-group">
+        <%= f.label :presentation_score, label_and_sublabel('수업분위기', '분위기 좋으면 10점을 주세요').html_safe, class: 'control-label' %>
+        <div class="controls">
+          <%= f.select :presentation_score, options_for_select(1..10, @assessment.presentation_score) %>
+        </div>
+      </div>
+      <div class="control-group">
+        <%= f.label :grading_score, label_and_sublabel('학점', '학점 잘 주시면 10점을 주세요').html_safe, class: 'control-label' %>
+        <div class="controls">
+          <%= f.select :grading_score, options_for_select(1..10, @assessment.grading_score) %>
+        </div>
+      </div>
+      <div class="control-group">
+        <%= f.label :difficulty_score, label_and_sublabel('시험', '적절한 난이도면 10점을 주세요').html_safe, class: 'control-label' %>
+        <div class="controls">
+          <%= f.select :difficulty_score, options_for_select(1..10, @assessment.difficulty_score) %>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="span6">
+      <div class="control-group">
+        <%= f.label :workload_score, label_and_sublabel('과제', '적당하면 10점을 주세요').html_safe, class: 'control-label' %>
+        <div class="controls">
+          <%= f.select :workload_score, options_for_select(1..10, @assessment.workload_score) %>
+        </div>
+      </div>
+      <div class="control-group">
+        <%= f.label :insight_score, label_and_sublabel('인생에 도움이 되나요?', '도움이 되면 10점을 주세요').html_safe, class: 'control-label' %>
+        <div class="controls">
+          <%= f.select :insight_score, options_for_select(1..10, @assessment.insight_score) %>
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label" for="content">하고 싶은 말</label>
+        <div class="controls">
+          <%= f.text_area :content, rows: 3 %>
+        </div>
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-large btn-warning btn-block">평가</button>
+  <% end %>
+</div>

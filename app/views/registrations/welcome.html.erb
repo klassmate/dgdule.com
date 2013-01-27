@@ -1,0 +1,22 @@
+<%= content_for :stylesheets do %>
+  <%= stylesheet_link_tag "welcome", :media => "all" %>
+<% end %>
+<h1>Welcome</h1>
+
+<div id="main-container">
+  <div class="tutorial-step1">
+    <div class="title-container">
+      <h1>학교를 다니면서 이런 생각 해 본 적 있죠?</h1>
+      <p class="title-emoticon">
+        "이 수업은 너무 좋아서 강추해 주고싶어!"
+        "이 수업은 시간과 등록금이 아까워.. 흑"
+      </p>
+    </div>
+    <div class="subtitle-container">
+        <h2>당신이 경험한 이화 최고 & 최악의 수업에 투표해주세요</h2>
+        <h3>벗의 투표에 따라 수업랭킹이 바뀝니다.</h3>
+
+        <%= link_to '투표하러 가기', search_registration_lectures_path(@registration), class: 'next' %>
+    </div>
+  </div>
+</div>

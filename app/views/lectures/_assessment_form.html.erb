@@ -1,0 +1,24 @@
+<div class="assessment-form-container">
+  <%= form_for [registration, lecture, assessment] do |f| %>
+    <div class="score-container-top">
+      <div class="score-container">
+        <%= f.text_field :presentation_score, :class => 'score presentation' %>
+        <%= f.label :presentation_score, '수업만족' %>
+      </div>
+      <div class="score-container">
+        <%= f.text_field :workload_score, :class => 'score workload' %>
+        <%= f.label :presentation_score, '과제만족' %>
+      </div>
+      <div class="score-container">
+        <%= f.text_field :grading_score, :class => 'score grading' %>
+        <%= f.label :presentation_score, '점수만족' %>
+      </div>
+    </div>
+    <p>
+      <%= f.text_area :content %>
+    </p>
+    <p class="actions-container">
+      <%= f.submit '작성하기', :class => 'btn-submit' %>
+    </p>
+  <% end %>
+</div>

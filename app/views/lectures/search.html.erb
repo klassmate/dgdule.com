@@ -1,0 +1,32 @@
+<%= content_for :stylesheets do %>
+  <%= stylesheet_link_tag 'search', :media => 'all' %>
+<% end %>
+
+<div id="main-container" class="login">
+  <div class="searchbox-container">
+    <form method="GET">
+      <input name="query" class="search-input" value="<%= @query %>" />
+      <input type="submit" class="btn-submit">
+    </form>
+  </div>
+
+  <% if @lectures %>
+    <div class="lectures left-container">
+      <% @lectures[0..2].each do |lecture| %>
+        <%= render partial: 'expanded_lecture', locals: { lecture: lecture } %>
+      <% end %>
+    </div>
+
+    <div class="lectures right-container">
+      <% if @lectures[3..-1] %>
+        <% @lectures[3..-1].each do |lecture| %>
+          <%= render partial: 'expanded_lecture', locals: { lecture: lecture } %>
+        <% end %>
+      <% end %>
+    </div>
+
+    <div class="pagination-container">
+      <%= will_paginate @lectures %>
+    </div>
+  <% end %>
+</div>

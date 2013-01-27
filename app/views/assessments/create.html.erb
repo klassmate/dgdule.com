@@ -1,0 +1,64 @@
+<%= content_for :stylesheets do %>
+  <%= stylesheet_link_tag 'lectures', :media => 'all' %>
+<% end %>
+
+<div id="main-container">
+  <div class="header">
+  </div>
+
+  <div class="body">
+    <div class="vertical-division left-container">
+      <%= render :partial => 'lectures/expanded_lecture', :locals => { :lecture => @lecture } %>
+
+      <div id="tagging-area" data-lecture-id="<%= @lecture.id %>">
+        <% @lecture.taggings.each do |tagging| %>
+          <%= tagging_to_image_tag(tagging) %>
+        <% end %>
+      </div>
+
+      <div class="actions-container">
+        <%= link_to '스티커 붙이기', new_lecture_tagging_path(@lecture), class: 'new-tagging' %>
+      </div>
+    </div>
+
+    <div class="vertical-division right-container">
+      <h1 class="result-title">결과보기</h1>
+
+      <div class="standings-container">
+        <% if @lectures.empty? || @lectures.count < 2 %>
+          <p class="empty">
+            강의 순위가 없습니다.
+          </p>
+        <% else %>
+          <% @lectures[0..1].each do |rank_and_lecture| %>
+            <%= lecture_container rank_and_lecture[1], rank_and_lecture[0] %>
+          <% end %>
+
+          <% idx = @lectures.find_index { |l| l[1].id == @lecture.id } %>
+
+          <% if !idx %>
+            <div class="ellipsis">...</div>
+            <p class="empty">
+              강의 순위가 없습니다.
+            </p>
+          <% elsif idx > 2 %>
+            <div class="ellipsis">...</div>
+
+            <% @lectures[idx-1..idx+1].each do |rank_and_lecture| %>
+              <%= lecture_container rank_and_lecture[1], rank_and_lecture[0] %>
+            <% end %>
+          <% elsif idx == 2 %>
+            <% @lectures[idx..idx+1].each do |rank_and_lecture| %>
+              <%= lecture_container rank_and_lecture[1], rank_and_lecture[0] %>
+            <% end %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+  </div>
+</div>
+
+<%= javascript_include_tag 'assessments' %>

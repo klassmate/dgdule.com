@@ -1,0 +1,61 @@
+<div class="expanded-lecture <%= lecture.best_or_worst %>">
+  <%= link_to lecture_container(lecture), lecture %>
+
+  <% if current_user && current_user.finished_registration? %>
+    <div class="scores-container">
+      <ul class="scores-list">
+        <li class="overall">
+          <span class="label">
+            총점:
+          </span>
+          <span class="score">
+            <%= '%.2f' % lecture.overall_score %>
+          </span>
+        </li>
+        <li>
+          <span class="label">
+            수업만족:
+          </span>
+          <span class="score">
+            <%= '%.2f' % lecture.presentation_score %>
+          </span>
+        </li>
+        <li>
+          <span class="label">
+            과제만족:
+          </span>
+          <span class="score">
+            <%= '%.2f' % lecture.workload_score %>
+          </span>
+        </li>
+        <li>
+          <span class="label">
+            점수만족:
+          </span>
+          <span class="score">
+            <%= '%.2f' % lecture.grading_score %>
+          </span>
+        </li>
+      </ul>
+      <div class="icons-container">
+        <%= score_indicators(lecture.overall_score) %>
+
+        <div class="hit-count-container stats">
+          <%= lecture.hit_count %>
+        </div>
+
+        <div class="assessment-count-container stats">
+          <%= lecture.assessment_count %>
+        </div>
+
+        <div class="taggings-count-container stats">
+          <%= lecture.taggings.count %>
+        </div>
+      </div>
+    </div>
+  <% else %>
+    <div class="blinded">
+      <%= link_to "강의평가 #{current_user.assessments_count_to_finished}개만 더 하면 자세히 볼 수 있어요 :D", lecture_path(lecture) %>
+    </div>
+  <% end %>
+</div>

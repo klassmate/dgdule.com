@@ -1,0 +1,31 @@
+<%= content_for :stylesheets do %>
+  <%= stylesheet_link_tag "search", :media => "all" %>
+<% end %>
+<h1>Welcome</h1>
+
+<div id="main-container">
+  <div class="tutorial-lectures-container tutorial-overlay">
+    <div class="<%= @registration.best_or_worst %>">
+      <% if @registration.best_or_worst == 'best' %>
+        <h1>벗에게 최고의 강의는 무슨 수업이었나요?</h1>
+      <% else %>
+        <h1>벗에게 최악의 강의는 무슨 수업이었나요?</h1>
+      <% end %>
+
+      <div class="searchbox-container">
+        <form method="POST">
+          <input name="query" class="search-input" />
+          <input type="submit" class="btn-submit">
+        </form>
+      </div>
+
+      <div class="lectures left-container">
+        <%= lecture_container(@lecture) %>
+
+        <%= render partial: 'assessment_form', locals: { registration: @registration, lecture: @lecture, assessment: @assessment } %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%= javascript_include_tag 'assessments' %>

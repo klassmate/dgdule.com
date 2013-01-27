@@ -1,0 +1,62 @@
+  <div class="hero-unit">
+    <h1>
+      <%= @lecture.title %>
+      <span class="provider"><%= @lecture.provider %></span>
+    </h1>
+    <p class="tagline scores-container">
+      <span class="score-label">수업분위기</span>
+      <span class="score-value"><%= s @lecture.presentation_score %></span>
+
+      <span class="score-label">학점만족도</span>
+      <span class="score-value"><%= s @lecture.grading_score %></span>
+
+      <span class="score-label">시험</span>
+      <span class="score-value"><%= s @lecture.difficulty_score %></span>
+
+      <span class="score-label">과제</span>
+      <span class="score-value"><%= s @lecture.workload_score %></span>
+
+      <span class="score-label">인생의 멘토</span>
+      <span class="score-value"><%= s @lecture.insight_score %></span>
+    </p>
+    <p>
+      <%= link_to '평가하기', new_lecture_assessment_path(@lecture), class: 'btn btn-warning btn-large' %>
+    </p>
+  </div>
+
+  <ul class="assessments-list">
+    <% @assessments.each do |assessment| %>
+      <div class="assessment-container">
+        <div class="timestamp-container">
+          <%= assessment.created_at %>
+        </div>
+
+        <%= c assessment.content %>
+
+        <div class="scores-container">
+          <div class="single-score">
+            <div class="score-label">수업</div>
+            <div class="score-value"><%= s assessment.presentation_score %></div>
+          </div>
+          <div class="single-score">
+            <div class="score-label">학점</div>
+            <div class="score-value"><%= s assessment.grading_score %></div>
+          </div>
+          <div class="single-score">
+            <div class="score-label">과제</div>
+            <div class="score-value"><%= s assessment.workload_score %></div>
+          </div>
+          <div class="single-score">
+            <div class="score-label">시험</div>
+            <div class="score-value"><%= s assessment.difficulty_score %></div>
+          </div>
+          <div class="single-score">
+            <div class="score-label">인생</div>
+            <div class="score-value"><%= s assessment.insight_score %></div>
+          </div>
+        </div>
+
+        <div style="clear: both;"></div>
+      </div>
+    <% end %>
+  </ul>

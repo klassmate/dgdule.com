@@ -1,0 +1,37 @@
+<%= render partial: 'shared/search_form' %>
+
+<ul class="lectures-list">
+  <% @lectures.each do |lecture| %>
+    <li>
+      <div class="lecture-container">
+        <div class="scores-container">
+          <div class="single-score">
+            <div class="score-label">수업</div>
+            <div class="score-value"><%= s lecture.presentation_score %></div>
+          </div>
+          <div class="single-score">
+            <div class="score-label">학점</div>
+            <div class="score-value"><%= s lecture.grading_score %></div>
+          </div>
+          <div class="single-score">
+            <div class="score-label">과제</div>
+            <div class="score-value"><%= s lecture.workload_score %></div>
+          </div>
+          <div class="single-score">
+            <div class="score-label">시험</div>
+            <div class="score-value"><%= s lecture.difficulty_score %></div>
+          </div>
+          <div class="single-score">
+            <div class="score-label">인생</div>
+            <div class="score-value"><%= s lecture.insight_score %></div>
+          </div>
+        </div>
+        <h3><%= link_to lecture.title, lecture %></h3>
+        <div class="provider"><%= lecture.provider %></div>
+      </div>
+
+    </li>
+  <% end %>
+
+  <%= will_paginate @lectures, :previous_label => '앞으로', :next_label => '뒤로' %>
+</ul>

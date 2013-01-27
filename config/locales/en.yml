@@ -1,0 +1,40 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+en:
+  assessments:
+    blinded_score: '-'
+    blinded_content: '(강의평 3개 등록 이후 열람 가능합니다)'
+  errors:
+    format: "%{message}"
+  registration:
+    authorization: '학번과 비밀번호를 확인해 주세요'
+  devise:
+    user_sessions:
+      signed_in: '로그인에 성공했습니다.'
+      signed_out: '로그아웃하셨습니다.'
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            username:
+              blank: '아이디를 입력해주세요.'
+            email:
+              invalid: '잘못된 이메일 주소입니다.'
+              taken: '같은 이메일로 이미 회원에 가입하셨습니다.'
+              blank: '이메일을 입력해주세요.'
+            password:
+              blank: '비밀번호를 입력해주세요.'
+              too_short: '비밀번호는 4자 이상 입력해주세요.'
+              too_long: '비밀번호가 너무 깁니다.'
+            transaction_id:
+              blank: '학생 인증에 실패했습니다.'
+              taken: '이미 같은 아이디로 인증된 회원이 존재합니다.'
+            nickname:
+              blank: '닉네임을 입력해주세요.'
+              tokan: '이미 같은 닉네임이 존재합니다.'
+        assessment:
+          attributes:
+            content:
+              blank: '내용을 입력해주세요 ㅠㅠ'

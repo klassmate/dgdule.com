@@ -1,0 +1,254 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ */
+/*= require bootstrap */
+/*= require jackedup */
+
+body {
+  font-family: NanumGothic,NanumGothicOTF,"Malgun Gothic",Dotum,sans-serif;
+}
+
+.main-logo {
+  width: 480px;
+  height: 237px;
+  text-indent: -9999px;
+
+  background: url(<%= asset_path 'logo.png' %>) no-repeat;
+}
+
+.first-view-container {
+  margin-top: 200px;
+
+  .login-form-container {
+    padding-top: 90px;
+  }
+
+  .registration-form-container {
+    padding-top: 10px;
+  }
+}
+
+.main-navbar-logo {
+  text-indent: -9999px;
+  margin-left: 10px !important;
+  width: 45px;
+  height: 10px;
+  margin: 0;
+  padding: 0;
+  background: url(<%= asset_path 'logo_tiny.png' %>) no-repeat;
+  background-position: 0 2px;
+}
+
+.search-lecture-form {
+  width: 650px;
+  text-align: right;
+  margin: 0 auto 0 auto;
+}
+
+.lectures-list {
+  list-style-type: none;
+
+  h1 {
+    font-size: 50px;
+    margin: 50px 0;
+    text-align: center;
+    color: #777;
+  }
+
+  .ranking-container {
+    float: left;
+    height: 70px;
+    width: 50px;
+    line-height: 70px;
+    font-size: 20px;
+    border-right: 2px solid #fecd08;
+    margin-right: 20px;
+    margin-top: -5px;
+  }
+
+  .lecture-container {
+    border-left: 4px solid #f36f21;
+    margin: 15px 0;
+    padding: 5px 15px;
+
+    h3 {
+      margin: 0;
+      a {
+        color: #ed1c24;
+        font-weight: bold;
+      }
+    }
+
+    .scores-container {
+      float: right;
+      width: 300px;
+
+      border-left: 2px solid #fecd08;
+
+      .single-score {
+        width: 60px;
+        float: left;
+        text-align: center;
+
+        .score-value {
+          font-size: 20px;
+          color: #f36f21;
+          line-height: 30px;
+        }
+      }
+    }
+  }
+
+  .lecture-container:hover {
+    background-color: #eee;
+  }
+}
+
+.pagination {
+  text-align: center;
+
+  a {
+    color: #f36f21;
+  }
+
+  a:hover {
+    color: #ed1c24;
+  }
+}
+
+.assessments-list {
+  list-style-type: none;
+  .assessment-container {
+    h3 {
+      a {
+        color: #ed1c24;
+      }
+    }
+    margin: 15px 0;
+    padding: 5px 15px;
+    border-left: 4px solid #fecd08;
+
+    .timestamp-container {
+      color: #999;
+      float: right;
+      padding: 10px 0;
+    }
+
+    .scores-container {
+      clear: both;
+      margin: 20px 0 0 0;
+
+      .single-score {
+        float: left;
+
+        .score-label {
+          display: inline;
+          color: #f36f21;
+        }
+
+        .score-value {
+          display: inline;
+          margin-right: 30px;
+        }
+      }
+    }
+  }
+}
+
+
+.assessment-form {
+  .control-label {
+    border-right: 2px solid #f36f21;
+    padding-right: 10px;
+    padding-bottom: 5px;
+  }
+
+  input[type="radio"] {
+    margin-right: 10px;
+    margin-top: 0;
+  }
+
+  .controls {
+    line-height: 50px;
+  }
+
+  textarea {
+    height: 50px;
+  }
+}
+
+.tagline.scores-container {
+  margin: 10px 0;
+  .score-label {
+    color: #f36f21;
+  }
+
+  .score-value {
+    margin-right: 30px;
+  }
+}
+
+.hero-unit h1 .provider {
+  font-size: 25px;
+  font-weight: normal;
+}
+
+.footer {
+  border-top: 2px solid #888;
+  margin-top: 100px;
+  padding-top: 30px;
+  color: #aaa;
+  text-align: center;
+}
+
+.sidebar {
+  h2 {
+    font-size: 1.5em;
+    margin: 10px 20px 0;
+    line-height: 30px;
+    color: #555;
+    padding-left: 10px;
+    text-align: center;
+  }
+
+  background: #eee;
+  .lectures-list {
+    margin: 0 20px;
+    .lecture-container {
+      clear: both;
+      padding: 0;
+      border: 0;
+
+      h3 {
+        margin-left: 10px;
+        font-size: 1.5em;
+      }
+
+      .score {
+        background: #ffd503;
+        padding-left: 10px;
+        color: #666;
+      }
+
+      .score.empty {
+        background: none;
+      }
+    }
+  }
+}
+
+.form-search {
+  margin: 30px auto;
+}
+
+.main-header {
+  margin-left: 300px;
+}

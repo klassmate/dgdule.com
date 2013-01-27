@@ -1,0 +1,8 @@
+<%= content_for :stylesheets do %>
+  <%= stylesheet_link_tag 'lectures', :media => 'all' %>
+<% end %>
+
+<%= render partial: 'lectures/expanded_lecture', locals: { lecture: @lecture } %>
+<%= render partial: 'lectures/assessment', locals: { assessment: @assessment } %>
+
+<%= javascript_include_tag 'assessments' %>

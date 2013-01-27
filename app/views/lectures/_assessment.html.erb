@@ -1,0 +1,35 @@
+<div class="assessment <%= assessment.best_or_worst %>">
+  <% if current_user && current_user.finished_registration? %>
+    <ul class="scores-list">
+      <li class="score presentation" data-score="<%= assessment.presentation_score %>">
+        <%= assessment.presentation_score %>
+      </li>
+      <li class="score workload" data-score="<%= assessment.workload_score %>">
+        <%= assessment.workload_score %>
+      </li>
+      <li class="score grading" data-score="<%= assessment.grading_score %>">
+        <%= assessment.grading_score %>
+      </li>
+    </ul>
+
+    <div class="content">
+      <%= assessment.content %>
+    </div>
+  <% else %>
+    <ul class="scores-list blinded">
+      <li class="score presentation">
+        -1
+      </li>
+      <li class="score workload">
+        -1
+      </li>
+      <li class="score grading">
+        -1
+      </li>
+    </ul>
+
+    <div class="content">
+      &nbsp;
+    </div>
+  <% end %>
+</div>

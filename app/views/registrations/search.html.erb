@@ -1,0 +1,50 @@
+<%= content_for :stylesheets do %>
+  <%= stylesheet_link_tag "search", :media => "all" %>
+<% end %>
+<h1>Welcome</h1>
+
+<div id="main-container">
+  <div class="tutorial-lectures-container">
+    <div class="<%= @registration.best_or_worst %>">
+      <% if @registration.best_or_worst == 'best' %>
+        <h1>벗에게 최고의 강의는 무슨 수업이었나요?</h1>
+      <% else %>
+        <h1>벗에게 최악의 강의는 무슨 수업이었나요?</h1>
+      <% end %>
+
+      <div class="searchbox-container">
+        <form method="GET">
+          <input name="query" class="search-input" value="<%= @query %>" />
+          <input type="submit" class="btn-submit">
+        </form>
+      </div>
+
+      <% if @lectures %>
+        <div class="lectures left-container">
+          <% @lectures[0..9].each do |lecture| %>
+            <%= link_to lecture_container(lecture), [@registration, lecture] %>
+          <% end %>
+        </div>
+
+        <div class="lectures right-container">
+          <% if @lectures[10..-1] %>
+            <% @lectures[10..-1].each do |lecture| %>
+              <%= link_to lecture_container(lecture), [@registration, lecture] %>
+            <% end %>
+          <% end %>
+        </div>
+
+        <div class="pagination-container">
+          <%= will_paginate @lectures %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<div class="registration-form-container">
+  <%= form_for @registration do |f| %>
+    <%= f.submit 'Next', class: 'btn-next' %>
+    <%= link_to 'Skip', lectures_path, class: 'btn-skip' %>
+  <% end %>
+</div>

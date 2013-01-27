@@ -1,0 +1,53 @@
+<%= content_for :stylesheets do %>
+  <%= stylesheet_link_tag 'lectures', :media => 'all' %>
+<% end %>
+
+<div id="main-container">
+  <div class="header">
+  </div>
+
+  <div class="body">
+    <div class="vertical-division left-container">
+      <%= render partial: 'lectures/expanded_lecture', locals: { lecture: @lecture } %>
+
+      <div id="tagging-area" data-lecture-id="<%= @lecture.id %>">
+        <% @lecture.taggings.each do |tagging| %>
+          <%= tagging_to_image_tag(tagging) %>
+        <% end %>
+      </div>
+
+      <div class="actions-container">
+        <%= link_to '돌아가기', @lecture, class: 'btn-back' %>
+      </div>
+    </div>
+
+    <div class="vertical-division right-container">
+      <div class="tags-container">
+        <h2>교수님 스타일</h2>
+        <% Tag.category(0, @lecture, current_user).each do |tag| %>
+          <%= image_tag asset_path(tag.image_file_name), :class => 'tag', 'data-tag-id' => tag.id %>
+        <% end %>
+
+        <h2>강의 스타일</h2>
+        <% Tag.category(1, @lecture, current_user).each do |tag| %>
+          <%= image_tag asset_path(tag.image_file_name), :class => 'tag', 'data-tag-id' => tag.id  %>
+        <% end %>
+
+        <h2>출첵 스타일</h2>
+        <% Tag.category(2, @lecture, current_user).each do |tag| %>
+          <%= image_tag asset_path(tag.image_file_name), :class => 'tag', 'data-tag-id' => tag.id  %>
+        <% end %>
+
+        <h2>시험 스타일</h2>
+        <% Tag.category(3, @lecture, current_user).each do |tag| %>
+          <%= image_tag asset_path(tag.image_file_name), :class => 'tag', 'data-tag-id' => tag.id  %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+  </div>
+</div>
+
+<%= javascript_include_tag 'taggings' %>

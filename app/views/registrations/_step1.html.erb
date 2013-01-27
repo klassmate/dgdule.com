@@ -1,0 +1,23 @@
+<div id="step1" class="registration-step">
+  <h2>가입하기</h2>
+
+  <%= form_for @registration do |f| %>
+    <h3>이화포탈 아이디로 인증하기</h3>
+
+    <h4>
+      재학생 인증을 위해 학교포탈사이트 로그인 정보를 입력해 주세요.
+      입력한 비밀번호는 인증 외의 용도로 사용하지 않습니다.
+    </h4>
+
+    <p>
+      <%= f.label :username, '학번' %>
+      <%= f.text_field :username, class: 'text-input' %>
+    </p>
+    <p>
+      <%= f.label :password, '비밀번호' %>
+      <%= f.password_field :password, class: 'text-input' %>
+    </p>
+
+    <%= f.submit '다음', class: 'next' %>
+  <% end %>
+</div>

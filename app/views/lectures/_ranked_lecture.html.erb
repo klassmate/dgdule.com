@@ -1,0 +1,11 @@
+<div class="ranked-lecture-index <%= best_or_worst %>">
+  <div class="lecture-container">
+    <%= render partial: 'expanded_lecture', locals: { lecture: lecture } %>
+  </div>
+
+  <div class="rank-container">
+    <%= rank %>위
+  </div>
+
+  <div style="clear: both;"></div>
+</div>

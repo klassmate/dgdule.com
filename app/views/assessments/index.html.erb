@@ -1,0 +1,61 @@
+<h1 class="main-logo main-header">DULE</h1>
+<div class="row">
+  <%= render partial: 'shared/search_form' %>
+</div>
+
+<div class="row">
+  <div class="span7">
+    <h2>최신 강의평</h2>
+    <ul class="assessments-list">
+      <% @assessments.each do |assessment| %>
+        <li>
+          <div class="assessment-container">
+            <h3><%= link_to assessment.lecture.title, assessment.lecture %><small><%= assessment.lecture.provider %></small></h3>
+            <div class="content"><%= c assessment.content %></div>
+            <div class="timestamp-container"><%= assessment.created_at %></div>
+            <div class="scores-container">
+              <div class="single-score">
+                <div class="score-label">수업</div>
+                <div class="score-value"><%= s assessment.presentation_score %></div>
+              </div>
+              <div class="single-score">
+                <div class="score-label">학점</div>
+                <div class="score-value"><%= s assessment.grading_score %></div>
+              </div>
+              <div class="single-score">
+                <div class="score-label">과제</div>
+                <div class="score-value"><%= s assessment.workload_score %></div>
+              </div>
+              <div class="single-score">
+                <div class="score-label">시험</div>
+                <div class="score-value"><%= s assessment.difficulty_score %></div>
+              </div>
+              <div class="single-score">
+                <div class="score-label">인생</div>
+                <div class="score-value"><%= s assessment.insight_score %></div>
+              </div>
+            </div>
+
+            <div style="clear: both;"</div>
+          </div>
+        </li>
+      <% end %>
+
+      <%= will_paginate @assessments, :previous_label => '앞으로', :next_label => '뒤로' %>
+    </ul>
+  </div>
+
+  <div class="span5 sidebar">
+    <h2>최고의 강의</h2>
+    <ul class="lectures-list nav nav-tabs nav-stacked">
+      <% @lectures.each_with_index do |lecture, i| %>
+        <li>
+          <div class="lecture-container">
+            <h3><%= link_to lecture.title, lecture %> <small><%= lecture.provider %></small></h3>
+            <div class="score <%= lecture.overall_score < 0.1 ? 'empty' : '' %>" style="min-width: 20%; max-width: <%= lecture.overall_score * 10 %>%">평점 <%= s lecture.overall_score %></div>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>

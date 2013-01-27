@@ -1,0 +1,32 @@
+<div id="step2" class="registration-step">
+  <h2>가입하기</h2>
+  <div class="pseudo-form">
+    <p class="authentication-successful">
+      인증되셨습니다!
+    </p>
+  </div>
+
+  <%= form_for [@registration, @user] do |f| %>
+    <p>
+      <%= f.label :email, 'E-mail' %>
+      <%= f.text_field :email, class: 'text-input text-input-big' %>
+    </p>
+    <p class="email-description">
+      현재 사용 중인 메일 주소를 입력해 주세요.
+      인증 메일을 확인하신 뒤 서비스를 이용할 수 있습니다.
+    </p>
+    <p>
+      <%= f.label :password, '비밀번호' %>
+      <%= f.password_field :password, class: 'text-input text-input-big' %>
+    </p>
+    <p>
+      <%= f.label :nickname, 'Nickname' %>
+      <%= f.text_field :nickname, class: 'text-input text-input-big' %>
+    </p>
+
+    <p class="agree-to-terms-of-use">
+      이용약관에 동의합니다.
+    </p>
+    <%= f.submit '다음', class: 'next' %>
+  <% end %>
+</div>

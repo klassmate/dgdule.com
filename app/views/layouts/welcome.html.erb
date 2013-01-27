@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>DULE</title>
+  <%= stylesheet_link_tag 'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
+  <%= csrf_meta_tags %>
+  <script type="text/javascript">
+    /*
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-35697801-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+    */
+  </script>
+  <script type="text/javascript">
+    $(function(){
+      <% if notice || alert %>
+        humane.log('<%= notice || alert %>');
+      <% end %>
+    });
+  </script>
+</head>
+<body>
+  <%= yield %>
+  <div class="container">
+    <div class="footer">
+      <div class="stats">
+        현재 <%= User.count %>명의 학우가 <%= Assessment.count %>개의 강의평을 공유하고 있습니다.
+      </div>
+    </div>
+  </div>
+</body>
+</html>

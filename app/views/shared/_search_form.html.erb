@@ -1,0 +1,4 @@
+<%= form_tag search_lectures_path, method: 'get', class: 'form-search search-lecture-form' do %>
+  <%= text_field_tag :query, @query, class: 'input-xxlarge search-query', placeholder: '강의명, 교수명으로 검색하세요' %>
+  <button type="submit" class="btn btn-warning">검색</button>
+<% end %>

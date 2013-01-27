@@ -1,0 +1,24 @@
+<%= content_for :stylesheets do %>
+  <%= stylesheet_link_tag 'lectures', :media => 'all' %>
+<% end %>
+
+<div id="main-container">
+  <div class="header">
+  </div>
+  <div class="body">
+    <div class="my-assessments-container">
+      <h1>강의평을 하나씩 쓸 때마다, 이화 스탬프도 하나씩 생겨요! 이화 스탬프가 많이 쌓일 수록 좋은 일이 생긴답니다.</h1>
+      <% @user.assessments.each do |assessment| %>
+        <div class="my-assessment">
+          <%= assessment.content %>
+        </div>
+      <% end %>
+    </div>
+    <div style="clear: both;"></div>
+  </div>
+
+  <div class="footer">
+  </div>
+</div>
+
+<%= javascript_include_tag 'assessments' %>
